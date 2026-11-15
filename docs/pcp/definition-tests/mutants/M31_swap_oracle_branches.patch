@@ -1,0 +1,11 @@
+--- a/PCP/Verifier/Definition.lean
++++ b/PCP/Verifier/Definition.lean
+@@ -41,7 +41,7 @@
+ /-- Run the decision tree against a proof oracle. -/
+ def eval : {d : ℕ} → QueryTree d → ProofOracle → Bool
+   | _, .leaf b, _ => b
+-  | _, .query a f t, π => if π a then (t.eval π) else (f.eval π)
++  | _, .query a f t, π => if π a then (f.eval π) else (t.eval π)
+ 
+ /-- Every address the tree could query, along any branch. -/
+ def addresses : {d : ℕ} → QueryTree d → Finset ℕ

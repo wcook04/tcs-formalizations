@@ -1,0 +1,11 @@
+--- a/PCP/Verifier/Definition.lean
++++ b/PCP/Verifier/Definition.lean
+@@ -101,7 +101,7 @@
+ /-- Acceptance probability, as an exact rational: the fraction of the `2 ^ randomness` equally
+ likely random strings on which `V` accepts. -/
+ def accProb : ℚ :=
+-  ((V.acceptingRandomness x π).card : ℚ) / ((2 : ℚ) ^ V.randomness x.length)
++  ((V.acceptingRandomness x π).card : ℚ) / (1 : ℚ)
+ 
+ theorem accProb_nonneg : 0 ≤ V.accProb x π :=
+   div_nonneg (by positivity) (by positivity)

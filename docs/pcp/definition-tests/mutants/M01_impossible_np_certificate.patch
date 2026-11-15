@@ -1,0 +1,10 @@
+--- a/PCP/Complexity/NP.lean
++++ b/PCP/Complexity/NP.lean
+@@ -28,6 +28,7 @@
+ a *theorem* over an unconstrained interface is refutable by choosing a degenerate instance; a
+ *definition* parameterised by one is just a definition. -/
+ structure NPCertificate (P : (List Bool → List Bool → Bool) → Prop) (L : Language) where
++  impossible : False
+   /-- Polynomial bound on witness length. -/
+   witnessBound : Polynomial ℕ
+   /-- The witness-checking relation. -/

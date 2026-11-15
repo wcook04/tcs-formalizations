@@ -1,0 +1,11 @@
+--- a/PCP/Verifier/Definition.lean
++++ b/PCP/Verifier/Definition.lean
+@@ -131,7 +131,7 @@
+ def CompleteAt : Prop := ∃ π : ProofOracle, V.accProb x π = 1
+ 
+ /-- Soundness at `x` with error `s`: every proof is accepted with probability at most `s`. -/
+-def SoundAt (s : ℚ) : Prop := ∀ π : ProofOracle, V.accProb x π ≤ s
++def SoundAt (s : ℚ) : Prop := ∀ π : ProofOracle, V.accProb x (fun _ => false) ≤ s
+ 
+ /-- Logarithmic randomness as an upper bound: at most `a * ⌈log₂ (n + 2)⌉ + b` fair bits on
+ inputs of length `n`.

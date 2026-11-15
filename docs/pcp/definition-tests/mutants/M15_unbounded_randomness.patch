@@ -1,0 +1,12 @@
+--- a/PCP/Verifier/Definition.lean
++++ b/PCP/Verifier/Definition.lean
+@@ -151,8 +151,7 @@
+ information of its own.  This is the "canonical computable budget" repair: it closes the hole that
+ `LogRandomness` leaves open, and it is without loss of generality because a verifier that wants
+ fewer bits can ignore the surplus. -/
+-def CanonicalRandomness (a b : ℕ) : Prop :=
+-  ∀ n : ℕ, V.randomness n = a * Nat.clog 2 (n + 2) + b
++def CanonicalRandomness (V : Verifier) (a b : ℕ) : Prop := True
+ 
+ theorem CanonicalRandomness.logRandomness {a b : ℕ} (h : V.CanonicalRandomness a b) :
+     V.LogRandomness a b := fun n => (h n).le

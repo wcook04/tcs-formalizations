@@ -1,0 +1,21 @@
+--- a/PCP/Theorem.lean
++++ b/PCP/Theorem.lean
+@@ -23,14 +23,14 @@
+ /-- `NP ⊆ PCP(O(log n), O(1))`, with one polynomial-time verifier for each language.
+ All constants and the proof-length polynomial are independent of the input. -/
+ theorem np_subset_pcp (L : Language) (hL : InNP Machine.PolyTimeRel L) :
+-    ∃ (V : Verifier) (alg : VerifierAlg) (a b q : ℕ) (p : Polynomial ℕ),
++    ∀ x : List Bool, ∃ (V : Verifier) (alg : VerifierAlg) (a b q : ℕ) (p : Polynomial ℕ),
+       Machine.PolyTimeAlg alg ∧
+       V.ImplementedBy alg ∧
+       V.queries = q ∧
+       V.CanonicalRandomness a b ∧
+-      (∀ x : List Bool, V.ReadsBelow x (p.eval x.length)) ∧
+-      (∀ x : List Bool, L x → V.CompleteAt x) ∧
+-      (∀ x : List Bool, ¬ L x → V.SoundAt x (1 / 2)) := by
++      V.ReadsBelow x (p.eval x.length) ∧
++      (L x → V.CompleteAt x) ∧
++      (¬ L x → V.SoundAt x (1 / 2)) := by
+   exact Algebraic.ThreeColorFinalAssembly.of_runtime Lang.ThreeColorRuntime.polyTimeAlg L hL
+ 
+ /-- The reverse inclusion follows by guessing the bounded proof prefix and

@@ -1,0 +1,11 @@
+--- a/PCP/Complexity/Machine.lean
++++ b/PCP/Complexity/Machine.lean
+@@ -45,7 +45,7 @@
+   | .inr a => .sep :: ofBits (Nat.bits a)
+ 
+ /-- Encoding of a Boolean result. -/
+-def encodeBool (b : Bool) : List Sym := [.bit b]
++def encodeBool (b : Bool) : List Sym := []
+ 
+ @[simp] theorem length_encodePair (p : List Bool × List Bool) :
+     (encodePair p).length = p.1.length + p.2.length + 1 := by

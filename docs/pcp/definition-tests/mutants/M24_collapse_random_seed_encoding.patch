@@ -1,0 +1,11 @@
+--- a/PCP/Complexity/CostModel.lean
++++ b/PCP/Complexity/CostModel.lean
+@@ -25,7 +25,7 @@
+ 
+ /-- The `k`-bit binary expansion of a random string index, least significant bit first. -/
+ def bitsOfFin (k : ℕ) (r : Fin (2 ^ k)) : List Bool :=
+-  (List.range k).map (fun j => r.val.testBit j)
++  (List.range k).map (fun _ => false)
+ 
+ @[simp] theorem length_bitsOfFin (k : ℕ) (r : Fin (2 ^ k)) : (bitsOfFin k r).length = k := by
+   simp [bitsOfFin]

@@ -1,0 +1,22 @@
+--- a/PCP/Verifier/Definition.lean
++++ b/PCP/Verifier/Definition.lean
+@@ -88,7 +88,7 @@
+   /-- Bound on the number of proof **bits** read (bits, not larger proof symbols). -/
+   queries : ℕ
+   /-- The decision tree used on input `x` and random string `r`. -/
+-  run : (x : List Bool) → Fin (2 ^ randomness x.length) → QueryTree queries
++  run : (x : List Bool) → Fin (2 ^ randomness x.length) → QueryTree ((x.length + 2) ^ queries)
+ 
+ namespace Verifier
+ 
+--- a/PCP/Complexity/CostModel.lean
++++ b/PCP/Complexity/CostModel.lean
+@@ -61,7 +61,7 @@
+ would not discharge it. -/
+ def ImplementedBy (V : Verifier) (alg : VerifierAlg) : Prop :=
+   ∀ (x : List Bool) (r : Fin (2 ^ V.randomness x.length)),
+-    QueryTree.ofStep (alg x (bitsOfFin (V.randomness x.length) r)) V.queries [] = V.run x r
++    QueryTree.ofStep (alg x (bitsOfFin (V.randomness x.length) r)) ((x.length + 2) ^ V.queries) [] = V.run x r
+ 
+ end Verifier
+ 

@@ -1,0 +1,11 @@
+--- a/PCP/Complexity/CostModel.lean
++++ b/PCP/Complexity/CostModel.lean
+@@ -60,7 +60,7 @@
+ addresses, and its decision rule all have to match. Proving some unrelated verifier efficient
+ would not discharge it. -/
+ def ImplementedBy (V : Verifier) (alg : VerifierAlg) : Prop :=
+-  ∀ (x : List Bool) (r : Fin (2 ^ V.randomness x.length)),
++  ∀ x : List Bool, ∃ r : Fin (2 ^ V.randomness x.length),
+     QueryTree.ofStep (alg x (bitsOfFin (V.randomness x.length) r)) V.queries [] = V.run x r
+ 
+ end Verifier

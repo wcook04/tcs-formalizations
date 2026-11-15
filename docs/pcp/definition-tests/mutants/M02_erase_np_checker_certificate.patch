@@ -1,0 +1,11 @@
+--- a/PCP/Complexity/NP.lean
++++ b/PCP/Complexity/NP.lean
+@@ -33,7 +33,7 @@
+   /-- The witness-checking relation. -/
+   check : List Bool → List Bool → Bool
+   /-- The relation is polynomial-time checkable. -/
+-  check_polyTime : P check
++  check_polyTime : True
+   /-- The relation defines `L`. -/
+   spec : ∀ x : List Bool, L x ↔
+     ∃ w : List Bool, w.length ≤ witnessBound.eval x.length ∧ check x w = true

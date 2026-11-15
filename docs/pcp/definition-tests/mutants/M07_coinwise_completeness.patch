@@ -1,0 +1,12 @@
+--- a/PCP/Verifier/Definition.lean
++++ b/PCP/Verifier/Definition.lean
+@@ -128,7 +128,8 @@
+   rw [accProb, accProb, this]
+ 
+ /-- Perfect completeness at `x`: some proof is accepted with probability 1. -/
+-def CompleteAt : Prop := ∃ π : ProofOracle, V.accProb x π = 1
++def CompleteAt : Prop :=
++  ∀ r : Fin (2 ^ V.randomness x.length), ∃ π : ProofOracle, (V.run x r).eval π = true
+ 
+ /-- Soundness at `x` with error `s`: every proof is accepted with probability at most `s`. -/
+ def SoundAt (s : ℚ) : Prop := ∀ π : ProofOracle, V.accProb x π ≤ s

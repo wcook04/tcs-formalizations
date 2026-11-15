@@ -1,0 +1,10 @@
+--- a/PCP/Theorem.lean
++++ b/PCP/Theorem.lean
+@@ -26,7 +26,6 @@
+     ∃ (V : Verifier) (alg : VerifierAlg) (a b q : ℕ) (p : Polynomial ℕ),
+       Machine.PolyTimeAlg alg ∧
+       V.ImplementedBy alg ∧
+-      V.queries = q ∧
+       V.CanonicalRandomness a b ∧
+       (∀ x : List Bool, V.ReadsBelow x (p.eval x.length)) ∧
+       (∀ x : List Bool, L x → V.CompleteAt x) ∧

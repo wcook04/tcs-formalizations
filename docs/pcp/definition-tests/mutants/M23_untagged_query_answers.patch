@@ -1,0 +1,11 @@
+--- a/PCP/Complexity/Machine.lean
++++ b/PCP/Complexity/Machine.lean
+@@ -42,7 +42,7 @@
+ separator followed by the address in binary. -/
+ def encodeAnswer : Bool ⊕ ℕ → List Sym
+   | .inl b => [.bit b]
+-  | .inr a => .sep :: ofBits (Nat.bits a)
++  | .inr a => ofBits (Nat.bits a)
+ 
+ /-- Encoding of a Boolean result. -/
+ def encodeBool (b : Bool) : List Sym := [.bit b]

@@ -1,0 +1,11 @@
+--- a/PCP/Verifier/Definition.lean
++++ b/PCP/Verifier/Definition.lean
+@@ -116,7 +116,7 @@
+ /-- `V` reads only proof addresses below `N` on input `x`, whatever the randomness and whatever
+ the oracle answers.  This is how "a proof of polynomial length" is expressed. -/
+ def ReadsBelow (N : ℕ) : Prop :=
+-  ∀ r, ∀ a ∈ (V.run x r).addresses, a < N
++  ∃ r, ∀ a ∈ (V.run x r).addresses, a < N
+ 
+ /-- Only the first `N` proof bits matter when `V.ReadsBelow x N`. -/
+ theorem accProb_congr_of_readsBelow {N : ℕ} (h : V.ReadsBelow x N) {π π' : ProofOracle}

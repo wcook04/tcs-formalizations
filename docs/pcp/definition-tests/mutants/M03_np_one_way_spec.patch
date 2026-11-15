@@ -1,0 +1,11 @@
+--- a/PCP/Complexity/NP.lean
++++ b/PCP/Complexity/NP.lean
+@@ -35,7 +35,7 @@
+   /-- The relation is polynomial-time checkable. -/
+   check_polyTime : P check
+   /-- The relation defines `L`. -/
+-  spec : ∀ x : List Bool, L x ↔
++  spec : ∀ x : List Bool, L x →
+     ∃ w : List Bool, w.length ≤ witnessBound.eval x.length ∧ check x w = true
+ 
+ /-- `L` is in NP relative to the polynomial-time-checkability notion `P`. -/

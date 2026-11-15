@@ -1,0 +1,11 @@
+--- a/PCP/Verifier/Definition.lean
++++ b/PCP/Verifier/Definition.lean
+@@ -46,7 +46,7 @@
+ /-- Every address the tree could query, along any branch. -/
+ def addresses : {d : ℕ} → QueryTree d → Finset ℕ
+   | _, .leaf _ => ∅
+-  | _, .query a f t => insert a (f.addresses ∪ t.addresses)
++  | _, .query a f t => insert a f.addresses
+ 
+ /-- The tree reads at most `d` bits along any branch: its address set has at most `2 ^ d - 1`
+ elements, and along a single run at most `d` queries are made. -/

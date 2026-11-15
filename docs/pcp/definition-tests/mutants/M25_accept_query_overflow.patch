@@ -1,0 +1,11 @@
+--- a/PCP/Complexity/CostModel.lean
++++ b/PCP/Complexity/CostModel.lean
+@@ -41,7 +41,7 @@
+ def ofStep (f : List Bool → Bool ⊕ ℕ) : (d : ℕ) → List Bool → QueryTree d
+   | 0, as => match f as with
+       | .inl b => .leaf b
+-      | .inr _ => .leaf false
++      | .inr _ => .leaf true
+   | _ + 1, as => match f as with
+       | .inl b => .leaf b
+       | .inr addr => .query addr (ofStep f _ (as ++ [false])) (ofStep f _ (as ++ [true]))

@@ -1,0 +1,11 @@
+--- a/PCP/Complexity/Machine.lean
++++ b/PCP/Complexity/Machine.lean
+@@ -32,7 +32,7 @@
+ 
+ /-- Encoding of an argument pair: `x`, separator, `w`. -/
+ def encodePair (p : List Bool × List Bool) : List Sym :=
+-  ofBits p.1 ++ .sep :: ofBits p.2
++  ofBits p.1 ++ ofBits p.2
+ 
+ /-- Encoding of an argument triple: input, random string, answers so far. -/
+ def encodeTriple (t : List Bool × List Bool × List Bool) : List Sym :=

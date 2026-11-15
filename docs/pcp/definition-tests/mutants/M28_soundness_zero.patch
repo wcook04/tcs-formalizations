@@ -1,0 +1,11 @@
+--- a/PCP/Theorem.lean
++++ b/PCP/Theorem.lean
+@@ -30,7 +30,7 @@
+       V.CanonicalRandomness a b ∧
+       (∀ x : List Bool, V.ReadsBelow x (p.eval x.length)) ∧
+       (∀ x : List Bool, L x → V.CompleteAt x) ∧
+-      (∀ x : List Bool, ¬ L x → V.SoundAt x (1 / 2)) := by
++      (∀ x : List Bool, ¬ L x → V.SoundAt x 0) := by
+   exact Algebraic.ThreeColorFinalAssembly.of_runtime Lang.ThreeColorRuntime.polyTimeAlg L hL
+ 
+ /-- The reverse inclusion follows by guessing the bounded proof prefix and
